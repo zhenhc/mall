@@ -1,7 +1,8 @@
-package com.macro.mall;
+package com.macro.mall.service;
 
 
 import cn.hutool.json.JSONUtil;
+import com.macro.mall.MallAdminApplicationTest;
 import com.macro.mall.dao.PmsMemberPriceDao;
 import com.macro.mall.dao.PmsProductDao;
 import com.macro.mall.dto.PmsProductResult;
@@ -21,9 +22,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class PmsDaoTests {
+public class PmsDaoTests extends MallAdminApplicationTest {
+
     @Autowired
     private PmsMemberPriceDao memberPriceDao;
     @Autowired
