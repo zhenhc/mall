@@ -37,6 +37,7 @@
         <pagehelper.version>5.2.0</pagehelper.version>
         <druid.version>1.1.23</druid.version>
         <hutool.version>5.4.0</hutool.version>
+        <fastjson.version>1.2.78</fastjson.version>
         <swagger2.version>2.9.2</swagger2.version>
         <swagger-models.version>1.6.0</swagger-models.version>
         <swagger-annotations.version>1.6.0</swagger-annotations.version>
@@ -71,6 +72,16 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -125,6 +136,13 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <!--fastjson 工具包-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
             <!--Swagger-UI API文档生产工具-->
             <dependency>

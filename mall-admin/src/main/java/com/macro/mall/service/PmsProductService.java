@@ -66,6 +66,7 @@ public interface PmsProductService {
      */
     int updateDeleteStatus(List<Long> ids, Integer deleteStatus);
 
+
     /**
      * 根据商品名称或者货号模糊查询
      */
