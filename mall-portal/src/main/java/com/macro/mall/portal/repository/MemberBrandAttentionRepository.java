@@ -28,6 +28,10 @@ public interface MemberBrandAttentionRepository extends MongoRepository<MemberBr
     Page<MemberBrandAttention> findByMemberId(Long memberId, Pageable pageable);
 
     /**
+     * 根据会员ID查找记录
+     */
+    List<MemberBrandAttention> findByMemberId(Long memberId);
+    /**
      * 根据会员ID删除记录
      */
     void deleteAllByMemberId(Long memberId);
