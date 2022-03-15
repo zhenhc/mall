@@ -1,6 +1,7 @@
 package com.macro.mall.portal.controller;
 import java.math.BigDecimal;
 
+import cn.hutool.core.lang.Console;
 import cn.hutool.core.util.RandomUtil;
 import com.macro.mall.mapper.OmsCartItemMapper;
 import com.macro.mall.mapper.PmsProductMapper;
@@ -66,7 +67,13 @@ public class OmsCartItemControllerTest extends MallPortalApplicationTests {
         cartItem.setDeleteStatus(0);
         try {
             //通过对象的getClass()方法获得Class,然后getMethod()方法获得私有方法。
-            Method method = cartItemServiceImpl.getClass().getMethod("getCartItem", OmsCartItem.class);
+            Class<?> tagetClass = Class.forName("com.macro.mall.portal.service.impl.OmsCartItemServiceImpl");
+            OmsCartItemServiceImpl cartItemServiceImpl =(OmsCartItemServiceImpl) tagetClass.newInstance();
+            Method[] methods = tagetClass.getDeclaredMethods();
+            for (Method method :methods){
+                Console.log(method.getName());
+            }
+            Method method = tagetClass.getDeclaredMethod("getCartItem", OmsCartItem.class);
             //设置私有方法可进入
             method.setAccessible(true);
             //使用method.invoke()方法反射调用私有方法。
