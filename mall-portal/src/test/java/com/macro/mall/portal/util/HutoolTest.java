@@ -14,6 +14,9 @@ import java.io.File;
 import java.util.List;
 
 public class HutoolTest {
+    /**
+     * 读入数据
+     */
     @Test
     public void test(){
         FileReader fileReader = new FileReader("E:\\developer\\IDE\\idea-projects\\mall\\mall\\mall-portal\\src\\main\\resources\\application-dev.yml");
@@ -21,6 +24,9 @@ public class HutoolTest {
         System.out.println(string);
     }
 
+    /**
+     * 写出文件
+     */
     @Test
     public void test1(){
         FileReader fileReader = new FileReader("E:\\developer\\IDE\\idea-projects\\mall\\mall\\mall-portal\\src\\main\\resources\\application-dev.yml");
@@ -33,6 +39,9 @@ public class HutoolTest {
         });
     }
 
+    /**
+     * 爬虫
+     */
     @Test
     public void test2(){
         //请求列表页
@@ -47,6 +56,9 @@ public class HutoolTest {
 
     }
 
+    /**
+     * 测试生成二维码
+     */
     @Test
     public void test3(){
         // 生成指定url对应的二维码到文件，宽和高都是300像素
