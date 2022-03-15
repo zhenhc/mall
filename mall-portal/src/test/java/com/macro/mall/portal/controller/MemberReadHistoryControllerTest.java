@@ -39,7 +39,9 @@ public class MemberReadHistoryControllerTest extends MallPortalApplicationTests 
         System.out.println(jsonArray1);
 
         List<MemberReadHistory> readHistoryList = new ArrayList<>();
-        for (int i=0;i<=100;i++) {
+        long startTime = System.currentTimeMillis();
+        System.out.println("startTime："+startTime);
+        for (int i=0;i<=100000;i++) {
             MemberReadHistory readHistory = new MemberReadHistory();
 
             UmsMember umsMember = memberList.get(RandomUtil.randomInt(0,memberList.size()));
@@ -55,11 +57,21 @@ public class MemberReadHistoryControllerTest extends MallPortalApplicationTests 
             readHistory.setProductPrice(pmsProduct.getPrice().toString());
             readHistory.setCreateTime(new Date());
             readHistoryList.add(readHistory);
+            if (readHistoryList.size()==10000){
+                System.err.println("浏览计数总数："+readHistoryList.size());
+                readHistoryRepository.saveAll(readHistoryList);
+                readHistoryList.clear();
+            }
             //readHistoryRepository.save(readHistory);
         }
-
+        //readHistoryRepository.saveAll(readHistoryList);
+        long endTime = System.currentTimeMillis();
+        System.out.println("endTime："+ endTime);
+        float seconds = (endTime - startTime) / 1000F;
+        System.out.println(seconds +" seconds.");
+/*
         JSONArray jsonArray2 = (JSONArray) JSON.toJSON(readHistoryList);
         System.out.println(jsonArray2);
-        readHistoryRepository.saveAll(readHistoryList);
+        readHistoryRepository.saveAll(readHistoryList);*/
     }
 }
