@@ -1,7 +1,7 @@
 package com.macro.mall.portal.controller;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
-import cn.hutool.core.lang.Console;
 import cn.hutool.core.util.RandomUtil;
 import com.macro.mall.mapper.OmsCartItemMapper;
 import com.macro.mall.mapper.PmsProductMapper;
@@ -115,5 +115,15 @@ public class OmsCartItemControllerTest extends MallPortalApplicationTests {
             return cartItemList.get(0);
         }
         return null;
+    }
+
+    @Test
+    public void test(){
+        Class<OmsCartItem> cartItemClass = OmsCartItem.class;
+        Field[] fields = cartItemClass.getDeclaredFields();
+        for (Field field : fields){
+            String caseTo_ = com.macro.mall.common.util.StringUtils.camelCaseTo_(field.getName());
+            System.out.println(caseTo_);
+        }
     }
 }
