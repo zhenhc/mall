@@ -42,6 +42,10 @@ public interface UmsMemberService {
     UmsMember getCurrentMember();
 
     /**
+     * 获取随机会员
+     */
+    UmsMember getRandomMember();
+    /**
      * 根据会员id修改会员积分
      */
     void updateIntegration(Long id,Integer integration);

@@ -94,7 +94,8 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     public Map<String, Object> generateOrder(OrderParam orderParam) {
         List<OmsOrderItem> orderItemList = new ArrayList<>();
         //获取购物车及优惠信息
-        UmsMember currentMember = memberService.getCurrentMember();
+        //UmsMember currentMember = memberService.getCurrentMember();
+        UmsMember currentMember = memberService.getRandomMember();
         List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId(), orderParam.getCartIds());
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
             //生成下单商品信息

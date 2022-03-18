@@ -1,5 +1,6 @@
 package com.macro.mall.portal.service.impl;
 
+import cn.hutool.core.util.RandomUtil;
 import com.macro.mall.common.exception.Asserts;
 import com.macro.mall.mapper.UmsMemberLevelMapper;
 import com.macro.mall.mapper.UmsMemberMapper;
@@ -141,6 +142,14 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         Authentication auth = ctx.getAuthentication();
         MemberDetails memberDetails = (MemberDetails) auth.getPrincipal();
         return memberDetails.getUmsMember();
+    }
+
+    @Override
+    public UmsMember getRandomMember() {
+/*        List<UmsMember> memberList = memberMapper.selectByExample(null);
+        UmsMember umsMember = memberList.get(RandomUtil.randomInt(0, memberList.size()));*/
+        UmsMember umsMember = memberMapper.selectByPrimaryKey(Long.valueOf(10));
+        return umsMember;
     }
 
     @Override
