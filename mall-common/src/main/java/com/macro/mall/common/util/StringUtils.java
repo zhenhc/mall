@@ -1,5 +1,9 @@
 package com.macro.mall.common.util;
 
+/**
+ * Author: zhenhc
+ * Description:
+ */
 public class StringUtils {
 
 
@@ -12,7 +16,8 @@ public class StringUtils {
         String b = "";
         for (int i=0;i<str.length();i++){
             char temp = str.charAt(i);
-            if (temp == '_'){
+            //排除第一个字符为“_”的情况
+            if (temp == '_' && i!=0){
                 //b+=temp;
                 char c = str.charAt(i + 1);
                 c = (char) (c-32);
