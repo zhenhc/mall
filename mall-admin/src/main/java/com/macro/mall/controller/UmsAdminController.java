@@ -3,6 +3,8 @@ package com.macro.mall.controller;
 import cn.hutool.core.collection.CollUtil;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
+import com.macro.mall.common.constant.RedisConstants;
+import com.macro.mall.common.service.RedisService;
 import com.macro.mall.dto.UmsAdminLoginParam;
 import com.macro.mall.dto.UmsAdminParam;
 import com.macro.mall.dto.UpdateAdminPasswordParam;
@@ -41,6 +43,8 @@ public class UmsAdminController {
     private UmsAdminService adminService;
     @Autowired
     private UmsRoleService roleService;
+    @Autowired
+    private RedisService redisService;
 
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -58,6 +62,7 @@ public class UmsAdminController {
     @ResponseBody
     public CommonResult login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
+        redisService.set(RedisConstants.REDIS_TOKEN_KEY,token);
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");
         }
