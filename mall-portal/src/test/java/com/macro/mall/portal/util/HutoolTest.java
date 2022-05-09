@@ -5,15 +5,45 @@ import cn.hutool.core.io.file.FileReader;
 import cn.hutool.core.io.file.FileWriter;
 import cn.hutool.core.lang.Console;
 import cn.hutool.core.util.ReUtil;
+import cn.hutool.db.nosql.mongo.MongoFactory;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSON;
+import com.mongodb.Block;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoIterable;
+import junit.framework.TestCase;
+import org.bson.Document;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.File;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class HutoolTest {
+public class HutoolTest extends TestCase {
+
+    public static final String dbName = "mall-port";
+    private MongoDatabase mongoDatabase = MongoFactory.getDS("master").getDb(dbName);;
+    public void test5(){
+        MongoCollection<Document> memberReadHistory =
+                mongoDatabase.getCollection("memberReadHistory");
+        long l = memberReadHistory.countDocuments();
+        System.out.println(l+" 条数据");
+        for (Document document : memberReadHistory.find()) {
+            String s = document.toJson();
+            System.out.println(s);
+        }
+
+    }
+    public void test4(){
+        MongoDatabase mongoDatabase = MongoFactory.getDS("127.0.0.1",27017).getDb(dbName);
+        MongoIterable<String> strings = mongoDatabase.listCollectionNames();
+
+        strings.forEach((Consumer<String>) s -> System.out.println(s));
+    }
     /**
      * 读入数据
      */

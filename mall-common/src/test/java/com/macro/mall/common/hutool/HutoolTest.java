@@ -6,7 +6,6 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.macro.mall.common.domain.Account;
-import com.macro.mall.common.util.ElasticSearchUtil;
 import com.macro.mall.common.util.StringUtils;
 import org.junit.Test;
 
@@ -56,13 +55,7 @@ public class HutoolTest {
         System.out.println(JSONUtil.parseArray(list));
     }
 
-    @Test
-    public void test2(){
-        String ip = "192.168.31.233";
-        String sql = "select * from pms";
-        List<Map<String, Object>> mapList = ElasticSearchUtil.searchBySql(ip, sql);
-        System.out.println(JSONUtil.parseArray(mapList));
-    }
+
 
     //curl -XPOST "http://192.168.31.233:9200/_sql?format=txt" -H 'Content-Type: application/json' -d'{  "query": "SELECT account_number,address,age,balance FROM account LIMIT 10"}'
     @Test
